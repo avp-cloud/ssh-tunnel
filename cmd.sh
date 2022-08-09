@@ -7,5 +7,4 @@
 # REMOTE_PORT: remote Gateway port to be forwarded
 # KEY_PATH: path to ssh key on the container
 
-ssh -i ${KEY_PATH} -N -o StrictHostKeyChecking=no -o ProxyCommand="socat - PROXY:${PROXY_HOST}:%h:%p,proxyport=${PROXY_PORT}" -R ${REMOTE_PORT}:${TARGET_IP}:${TARGET_PORT} -N -f ${GW_USER}@${GW_HOST}
-
+ssh -i ${KEY_PATH} -fN -o StrictHostKeyChecking=no -o ProxyCommand="socat - PROXY:${PROXY_HOST}:%h:%p,proxyport=${PROXY_PORT}" -R ${REMOTE_PORT}:${TARGET_IP}:${TARGET_PORT} -N -f ${GW_USER}@${GW_HOST}
