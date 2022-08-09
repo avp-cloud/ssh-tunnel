@@ -6,5 +6,6 @@
 # TARGET_PORT: target service port in the local network
 # REMOTE_PORT: remote Gateway port to be forwarded
 
-ssh -i /id_rsa -R ${REMOTE_PORT}:${TARGET_IP}:${TARGET_PORT} -N -f ${GW_USER}@${GW_HOST}
+
+ssh -i /id_rsa -o ProxyCommand="socat - PROXY:${PROXY_HOST}:%h:%p,proxyport=${PROXY_PORT}" -R ${REMOTE_PORT}:${TARGET_IP}:${TARGET_PORT} -N -f ${GW_USER}@${GW_HOST}
 
