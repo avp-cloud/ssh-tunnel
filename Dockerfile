@@ -11,5 +11,5 @@ FROM alpine:latest
 # mount ssh private key in /id_rsa
 
 RUN apk --no-cache add openssh-client bash socat
-COPY cmd.sh /
-CMD /cmd.sh
+COPY entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
